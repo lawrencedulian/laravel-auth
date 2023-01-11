@@ -34,6 +34,9 @@
                                     <a class="btn btn-success" href="{{ route('admin.projects.show', $proj->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
+                                    <a class="btn btn-warning" href="{{ route('admin.projects.edit', $proj->slug) }}">
+                                        <i class="fa-solid fa-file-pen"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
