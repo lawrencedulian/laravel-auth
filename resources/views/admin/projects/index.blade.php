@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 @if (session('message'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-warning">
                         {{ session('message') }}
                     </div>
                 @endif
@@ -37,6 +37,15 @@
                                     <a class="btn btn-warning" href="{{ route('admin.projects.edit', $proj->slug) }}">
                                         <i class="fa-solid fa-file-pen"></i>
                                     </a>
+                                    <form action="{{ route('admin.projects.destroy', $proj->slug) }}" method="POST"
+                                        class="d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger delete-btn"
+                                            data-project-title="{{ $proj->title }}"">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
