@@ -22,6 +22,7 @@
                         <tr>
                             <th scope="col">Titolo:</th>
                             <th scope="col">Data Creazione:</th>
+                            <th scope="col">Preview: </th>
                             <th scope="col">Azioni:</th>
                         </tr>
                     </thead>
@@ -30,6 +31,14 @@
                             <tr>
                                 <th scope="row">{{ $proj->title }}</th>
                                 <td>{{ $proj->created_at }}</td>
+                                <td>
+                                    @if ($proj->cover_image)
+                                        <img class="w-50" src="{{ asset('storage/' . $proj->cover_image) }}"
+                                            alt="">
+                                    @else
+                                        <div class="w-50 bg-secondary py-4 text-center">NO FILE</div>
+                                    @endif
+                                </td>
                                 <td>
                                     <a class="btn btn-success" href="{{ route('admin.projects.show', $proj->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
@@ -41,8 +50,7 @@
                                         class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger delete-btn"
-                                            data-project-title="{{ $proj->title }}"">
+                                        <button type="submit" class="btn btn-danger delete-btn">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

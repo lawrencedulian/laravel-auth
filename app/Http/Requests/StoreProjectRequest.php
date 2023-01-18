@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'max:300', 'unique:projects'], //specify which table are you refering to - unique:nameTable
             'content' => ['nullable'],
+            'cover_image' => ['nullable', 'image', 'max:600']
         ];
     }
 }
